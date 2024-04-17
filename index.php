@@ -1,3 +1,19 @@
+<?php
+  if (isset($_POST['login'])) {
+      $email = $_POST['email'];
+      $password = $_POST['password'];
+
+      require_once("classes/database.php");
+      require_once("classes/connection.php");
+      $obj = new User();
+      $obj->setDatabase($serverName,$dbname,$user,$dbpass);
+      $obj->getDatabase();
+      $obj->connDatabase();
+      $obj->setLogin($email,$password);
+  }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,7 +33,6 @@
     <!-- Custom CSS -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="custom.css" rel="stylesheet">
-    
     <!-- <link rel="stylesheet" href="css/basic.style.css"> -->
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -26,49 +41,8 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <style>
-        /* Add custom styles here */
-        .container {
-            position: relative;
-            height: 100vh; /* Full height of viewport */
-        }
-
-        .container1 {
-            position: relative;
-            height: 100vh; /* Full height of viewport */
-        }
-        .col-lg-4 {
-            position: absolute;
-            top: 35%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-        .login-box {
-            width: 350px; /* Adjust width as needed */
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        /* Change header background color */
-        .navbar-fixed-top {
-            background-color: #000000; /* Change to your desired color */
-        }
-         /* Change navbar text color */
-         .navbar-fixed-top .navbar-brand,
-        .navbar-fixed-top .nav.navbar-nav.pull-right li a {
-            color: #fff; /* Change to your desired color */
-        }
-
-        /* Change navbar link color on hover */
-        .navbar-fixed-top .nav.navbar-nav.pull-right li a:hover,
-        .navbar-fixed-top .nav.navbar-nav.pull-right li a:focus {
-            color: #ccc !important; /* Change to your desired hover color */
-        }
-        
 
 
-    </style>
 </head>
     <body>
 
@@ -91,34 +65,41 @@
 
     </div>
   </nav>
+      <div class="hero-unit col-lg-8">
 
-  <div class="container1">
-    <div class="login-box">
-        <div class="col-lg-4">
-            <div class="row">
-                <h2><span class="fa fa-users"></span> User Login</h2><br>
-                <form role="form" method="post" action="index.php">
-                    <div class="form-group">
-                        <label for="name">Email address</label>
-                        <input type="email" class="form-control" name="email" placeholder="Enter email">
-                    </div>
-                    <div class="form-group">
-                        <label for="name">Password</label>
-                        <input type="password" class="form-control" name="password" placeholder="Enter Password">
-                    </div>
-                    <button type="submit" name="login" class="btn btn-primary btn-lg">Login</button>
-                </form>
-            </div>
+      </div>
+      <div class="col-lg-4" style="margin-left:50px;"><br><br><br><br><br><br>
+        <div class="row"><br><br>
+          <!-- <div class="col-lg-4 col-lg-offset-4 well" > -->
+            <h2><span class="fa fa-users"></span> User Login</h2><br>
+            <form role="form" method="post" action="index.php">
+              <div class="form-group">
+                <label for="name">Email address</label>
+                <input type="email" class="form-control" name="email" placeholder="Enter email">
+              </div>
+              <div class="form-group">
+                <label for="name">Password</label>
+                <input type="password" class="form-control" name="password" placeholder="Enter Password">
+              </div>
+
+              <button type="submit" name="login" class="btn btn-primary btn-lg ">Login</button><br><br>
+            </form>
+          <!-- </div> -->
         </div>
-    </div>
-</div>
+
+      </div>
+    <!-- </div> -->
 
 
 
+        <footer class="footer pull-right">
+          <span>Copyright 2017</span>
+        </footer>
 
-<!-- jQuery -->
-<script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
-<!-- Bootstrap Core JavaScript -->
-<script src="bootstrap/js/bootstrap.min.js"></script>
-</body>
+
+          <!-- jQuery -->
+          <script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
+         <!-- Bootstrap Core JavaScript -->
+         <script src="bootstrap/js/bootstrap.min.js"></script>
+    </body>
 </html>
